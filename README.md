@@ -1,5 +1,5 @@
 ### Hi there 👋
-I'm SALhik
+- I'm SALhik
 - 🌱 I’m currently learning how to fix vulnerabilities in the school's computer.
 - 🤔 I’m looking for help on how to be a white hat hacker.
 - 📫 How to reach me: by email or teams.
