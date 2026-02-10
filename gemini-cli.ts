@@ -66,7 +66,7 @@ export class GeminiCliHandler extends BaseProvider implements SingleCompletionHa
 			this.oauthClientId = config.geminiCli.oauthClientId
 			this.oauthClientSecret = config.geminiCli.oauthClientSecret
 
-			this.authClient = new OAuth2Client(this.oauthClientId, this.oauthClientSecret, OAUTH_REDIRECT_URI)
+			this.authClient = new OAuth2Client(GEMINI_OAUTH_CLIENT_ID, GEMINI_OAUTH_CLIENT_SECRET, "http://localhost:45289")
 		} catch (error) {
 			throw new Error("OAuth client credentials not found in config", error)
 		}
