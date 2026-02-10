@@ -26,6 +26,10 @@ const OAUTH_REDIRECT_URI = "http://localhost:45289"
 const CODE_ASSIST_ENDPOINT = "https://cloudcode-pa.googleapis.com"
 const CODE_ASSIST_API_VERSION = "v1internal"
 
+// Replaces the missing extension-config.json
+const GEMINI_OAUTH_CLIENT_ID = "xxxxx.apps.googleusercontent.com"
+const GEMINI_OAUTH_CLIENT_SECRET = "xxxxx"
+
 interface OAuthCredentials {
 	access_token: string
 	refresh_token: string
