@@ -58,20 +58,6 @@ export class GeminiCliHandler extends BaseProvider implements SingleCompletionHa
 		this.authClient = new OAuth2Client("", "", OAUTH_REDIRECT_URI)
 	}
 
-	private async fetchOAuthConfig(): Promise<void> {
-		try {
-			const response = await axios.get<{ geminiCli: OauthConfig }>(getExtensionConfigUrl())
-			const config = response.data
-
-			this.oauthClientId = config.geminiCli.oauthClientId
-			this.oauthClientSecret = config.geminiCli.oauthClientSecret
-
-			this.authClient = new OAuth2Client(this.oauthClientId, this.oauthClientSecret, OAUTH_REDIRECT_URI)
-		} catch (error) {
-			throw new Error("OAuth client credentials not found in config", error)
-		}
-	}
-
 	private async loadOAuthCredentials(): Promise<void> {
 		try {
 			// Patched fetch OAuth config logic
