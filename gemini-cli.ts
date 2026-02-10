@@ -66,7 +66,7 @@ export class GeminiCliHandler extends BaseProvider implements SingleCompletionHa
 			this.oauthClientId = config.geminiCli.oauthClientId
 			this.oauthClientSecret = config.geminiCli.oauthClientSecret
 
-			this.authClient = new OAuth2Client(GEMINI_OAUTH_CLIENT_ID, GEMINI_OAUTH_CLIENT_SECRET, "http://localhost:45289")
+			this.authClient = new OAuth2Client(this.oauthClientId, this.oauthClientSecret, OAUTH_REDIRECT_URI)
 		} catch (error) {
 			throw new Error("OAuth client credentials not found in config", error)
 		}
@@ -75,6 +75,13 @@ export class GeminiCliHandler extends BaseProvider implements SingleCompletionHa
 	private async loadOAuthCredentials(): Promise<void> {
 		try {
 			// Patched fetch OAuth config logic
+			// First, fetch OAuth config if not already fetched
+			if (!this.oauthClientId || !this.oauthClientSecret) {
+				this.oauthClientId = GEMINI_OAUTH_CLIENT_ID
+				this.oauthClientSecret = GEMINI_OAUTH_CLIENT_SECRET
+				this.authClient = new OAuth2Client(this.oauthClientId, this.oauthClientSecret, OAUTH_REDIRECT_URI)
+			}
+			
 			const credPath = this.options.geminiCliOAuthPath || path.join(os.homedir(), ".gemini", "oauth_creds.json")
 			const credData = await fs.readFile(credPath, "utf-8")
 			this.credentials = JSON.parse(credData)
