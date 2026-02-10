@@ -70,11 +70,7 @@ export class GeminiCliHandler extends BaseProvider implements SingleCompletionHa
 
 	private async loadOAuthCredentials(): Promise<void> {
 		try {
-			// First, fetch OAuth config if not already fetched
-			if (!this.oauthClientId || !this.oauthClientSecret) {
-				await this.fetchOAuthConfig()
-			}
-
+			// Patched fetch OAuth config logic
 			const credPath = this.options.geminiCliOAuthPath || path.join(os.homedir(), ".gemini", "oauth_creds.json")
 			const credData = await fs.readFile(credPath, "utf-8")
 			this.credentials = JSON.parse(credData)
