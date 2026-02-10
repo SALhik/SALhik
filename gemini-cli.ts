@@ -27,8 +27,8 @@ const CODE_ASSIST_ENDPOINT = "https://cloudcode-pa.googleapis.com"
 const CODE_ASSIST_API_VERSION = "v1internal"
 
 // Replaces the missing extension-config.json
-const GEMINI_OAUTH_CLIENT_ID = "xxxxx.apps.googleusercontent.com"
-const GEMINI_OAUTH_CLIENT_SECRET = "xxxxx"
+const GEMINI_OAUTH_CLIENT_ID = "681255809395-oo8ft2oprdrnp9e3aqf6av3hmdib135j.apps.googleusercontent.com"
+const GEMINI_OAUTH_CLIENT_SECRET = "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"
 
 interface OAuthCredentials {
 	access_token: string
